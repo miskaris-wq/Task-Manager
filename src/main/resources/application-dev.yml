@@ -1,0 +1,6 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://dpg-d2b4kdur433s739emlbg-a:5432/database_for_task_manager_dy1x
+    username: database_for_task_manager_dy1x_user
+    password: apnUcmf7WBtf7jVqiRuxidsO60RKad1M
+    driver-class-name: org.postgresql.Driver
