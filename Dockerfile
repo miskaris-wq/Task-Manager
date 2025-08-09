@@ -2,6 +2,8 @@ FROM eclipse-temurin:21-jdk
 
 WORKDIR /application
 
+ENV PORT=8080
+
 COPY gradlew .
 COPY gradle gradle
 COPY build.gradle.kts .
