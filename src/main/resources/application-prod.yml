@@ -4,7 +4,3 @@ spring:
     username: database_for_task_manager_dy1x_user
     password: apnUcmf7WBtf7jVqiRuxidsO60RKad1M
     driver-class-name: org.postgresql.Driver
-  jpa:
-    hibernate:
-      ddl-auto: update
-    show-sql: true

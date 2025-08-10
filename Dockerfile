@@ -3,6 +3,7 @@ FROM eclipse-temurin:21-jdk
 WORKDIR /application
 
 ENV PORT=8080
+ENV SPRING_PROFILES_ACTIVE=prod
 
 COPY gradlew .
 COPY gradle gradle

@@ -19,8 +19,10 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "first_name")
     private String firstName;
 
+    @Column(name = "last_name")
     private String lastName;
 
     @Email
@@ -30,9 +32,11 @@ public class User {
     @Size(min = 3)
     private String password;
 
+    @Column(name = "created_at")
     @CreationTimestamp
     private LocalDate createdAt;
 
+    @Column(name = "updated_at")
     @UpdateTimestamp
     private LocalDate updatedAt;
 }
