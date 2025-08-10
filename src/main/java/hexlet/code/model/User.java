@@ -1,22 +1,19 @@
 package hexlet.code.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
-import jakarta.persistence.Id;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Column;
-import jakarta.persistence.GenerationType;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
-import java.time.Instant;
+import java.time.LocalDate;
 
-@Entity
-@Table(name = "users")
 @Getter
 @Setter
+@Entity
+@Table(name = "users")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,15 +23,16 @@ public class User {
 
     private String lastName;
 
+    @Email
     @Column(unique = true)
     private String email;
 
+    @Size(min = 3)
     private String password;
 
     @CreationTimestamp
-    private Instant createdAt;
+    private LocalDate createdAt;
 
     @UpdateTimestamp
-    private Instant updatedAt;
-
+    private LocalDate updatedAt;
 }
