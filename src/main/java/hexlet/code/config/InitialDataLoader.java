@@ -17,11 +17,21 @@ public class InitialDataLoader {
     @Bean
     public ApplicationRunner loadInitialData() {
         return args -> {
-            if (userRepository.findByEmail("hexlet@example.com").isEmpty()) {
+            // Проверяем существование администратора
+            var adminEmail = "hexlet@example.com";
+            var adminExists = userRepository.findByEmail(adminEmail).isPresent();
+
+            if (!adminExists) {
                 User admin = new User();
-                admin.setEmail("hexlet@example.com");
+                admin.setEmail(adminEmail);
                 admin.setPassword(passwordEncoder.encode("qwerty"));
+                // Устанавливаем дополнительные поля, если нужно
+                admin.setFirstName("Admin");
+                admin.setLastName("System");
                 userRepository.save(admin);
+
+                // Можно добавить логирование для отслеживания
+                System.out.println("Created default admin user with email: " + adminEmail);
             }
         };
     }
