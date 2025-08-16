@@ -25,12 +25,11 @@ public class InitialDataLoader {
                 User admin = new User();
                 admin.setEmail(adminEmail);
                 admin.setPassword(passwordEncoder.encode("qwerty"));
-                // Устанавливаем дополнительные поля, если нужно
+
                 admin.setFirstName("Admin");
                 admin.setLastName("System");
                 userRepository.save(admin);
 
-                // Можно добавить логирование для отслеживания
                 System.out.println("Created default admin user with email: " + adminEmail);
             }
         };
