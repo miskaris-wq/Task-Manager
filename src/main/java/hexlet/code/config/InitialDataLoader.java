@@ -17,21 +17,24 @@ public class InitialDataLoader {
     @Bean
     public ApplicationRunner loadInitialData() {
         return args -> {
-            // Проверяем существование администратора
-            var adminEmail = "hexlet@example.com";
-            var adminExists = userRepository.findByEmail(adminEmail).isPresent();
+            String rawPassword = "qwerty";
+            String encodedPassword = passwordEncoder.encode(rawPassword);
 
-            if (!adminExists) {
+            System.out.println("======= DEBUG =======");
+            System.out.println("Raw password: qwerty");
+            System.out.println("Encoded password: " + encodedPassword);
+            System.out.println("====================");
+
+            var adminEmail = "hexlet@example.com";
+            if (!userRepository.findByEmail(adminEmail).isPresent()) {
                 User admin = new User();
                 admin.setEmail(adminEmail);
-                admin.setPassword(passwordEncoder.encode("qwerty"));
-
+                admin.setPassword(encodedPassword);
                 admin.setFirstName("Admin");
                 admin.setLastName("System");
                 userRepository.save(admin);
-
-                System.out.println("Created default admin user with email: " + adminEmail);
             }
         };
     }
+
 }
