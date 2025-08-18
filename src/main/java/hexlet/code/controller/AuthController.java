@@ -1,6 +1,6 @@
 package hexlet.code.controller;
 
-import hexlet.code.config.jwt.JwtUtils;
+import hexlet.code.utils.JwtUtils;
 import hexlet.code.dto.AuthRequest;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;

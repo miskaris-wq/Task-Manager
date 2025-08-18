@@ -29,7 +29,7 @@ public class InitialDataLoader {
             if (!userRepository.findByEmail(adminEmail).isPresent()) {
                 User admin = new User();
                 admin.setEmail(adminEmail);
-                admin.setPassword(encodedPassword);
+                admin.setPasswordDigest(encodedPassword);
                 admin.setFirstName("Admin");
                 admin.setLastName("System");
                 userRepository.save(admin);
