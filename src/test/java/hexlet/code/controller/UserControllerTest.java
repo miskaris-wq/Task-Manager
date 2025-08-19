@@ -73,18 +73,13 @@ class UserControllerTest {
 
     @BeforeEach
     public void setUp() {
-        // очищаем базу данных
         userRepository.deleteAll();
-        // настраиваем объект mockmvc
         mockMvc = MockMvcBuilders.webAppContextSetup(wac)
                 .defaultResponseCharacterEncoding(StandardCharsets.UTF_8)
                 .apply(springSecurity())
                 .build();
-        // создаем тестового пользователя
         testUser = genUser("testUser@mail.ru");
-        // хэшруем пароль и сохраняем в базу данных
         userRepository.save(testUser);
-        // получаем токен
         token = jwt().jwt(builder -> builder.subject(testUser.getEmail()));
     }
 
@@ -95,11 +90,9 @@ class UserControllerTest {
                 .andReturn()
                 .getResponse();
         var body = response.getContentAsString();
-        // создаем список дто пользователей
         List<UserDTO> userDTOs = om.readValue(body, new TypeReference<>() {
         });
         var actual = userDTOs.stream().map(p -> userMapper.map(p)).toList();
-        // получаем список пользователей из базы данных
         var expected = userRepository.findAll();
         assertThat(actual).containsExactlyInAnyOrderElementsOf(expected);
     }
@@ -121,18 +114,13 @@ class UserControllerTest {
 
     @Test
     public void testCreate() throws Exception {
-        // генерируем пользователя с почтой:
         var newUser = genUser("newUser@mail.ru");
-        // создаем пост запрос
         var request = post("/api/users")
-                .with(token) // токен
-                .contentType(MediaType.APPLICATION_JSON) // в виде жсона
-                .content(om.writeValueAsString(newUser)); // читаем содержимое newUser как строку
-        // отправляем запрос и ожидаем ответ 201
+                .with(token)
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(om.writeValueAsString(newUser));
         mockMvc.perform(request).andExpect(status().isCreated());
-        // находим пользователя по почте
         var user = userRepository.findByEmail(newUser.getEmail()).orElse(null);
-        // проверяем что не null (т.е. есть в базе данных)
         assertNotNull(user);
         assertThat(user.getFirstName()).isEqualTo(newUser.getFirstName());
         assertThat(user.getLastName()).isEqualTo(newUser.getLastName());

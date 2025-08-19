@@ -87,13 +87,6 @@ public class DataInitializer implements ApplicationRunner {
             createLabel("bug");
             createLabel("feature");
         }
-//        if (taskRepository.findAll().isEmpty()) {
-//            createTask("Homework", "draft");
-//            createTask("Cleaning", "to_review");
-//            createTask("Sport", "to_be_fixed");
-//        }
-
-
 
     }
 }

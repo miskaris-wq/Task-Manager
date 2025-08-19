@@ -25,7 +25,6 @@ public class CustomUserDetailsService implements UserDetailsManager {
         return user;
     }
 
-
     @Override
     public void createUser(UserDetails userData) {
         var user = new User();
