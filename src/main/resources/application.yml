@@ -1,16 +1,40 @@
+logging:
+  level:
+    root: WARN
+    org:
+      springframework:
+        # web: DEBUG
+        security: DEBUG
+
 spring:
-  mvc:
-    static-path-pattern: /**
-  web:
-    resources:
-      static-locations: classpath:/static/
   jpa:
+    generate-ddl: true
     show-sql: true
     hibernate:
-      ddl-auto: update
-    properties:
-      hibernate:
-        format_sql: true
+      ddl-auto: create
+  profiles:
+    active: development
+
+  output:
+    ansi:
+      enabled: always
+server:
+  address: 0.0.0.0
+  port: ${PORT:8080}
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+    api-docs:
+      path: /api-docs
+
+##sentry:
+  ##dsn: https://7e0d46d979e9381745b4db1ed25561fd@o4509214198857728.ingest.de.sentry.io/4509214202134608
+  # Add data like request headers and IP for users,
+  # see https://docs.sentry.io/platforms/java/guides/spring-boot/data-management/data-collected/ for more info
+  ##send-default-pii: true
+rsa:
+  private-key: classpath:certs/private.pem
+  public-key: classpath:certs/public.pem
 jwt:
   secret: jCHBiJpBrnBzQeSQJz/gE+2bS0uO38m3N/id5RMxauI=
   expiration: 86400000
