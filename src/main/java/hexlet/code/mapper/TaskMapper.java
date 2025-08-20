@@ -58,7 +58,7 @@ public abstract class TaskMapper {
     @Mapping(target = "description", source = "content")
     @Mapping(target = "taskStatus", source = "status", qualifiedByName = "slugToStatus")
     @Mapping(target = "name", source = "title")
-    @Mapping(target = "labels", source = "taskLabelIds", qualifiedByName = "forLabels")
+    //@Mapping(target = "labels", source = "taskLabelIds", qualifiedByName = "forLabels")
     public abstract void update(TaskUpdateDTO data, @MappingTarget Task task);
 
     @Named("reverseLabels")
@@ -111,18 +111,6 @@ public abstract class TaskMapper {
         }
         return userRepository.findById(assigneeId.get())
                 .orElseThrow();
-    }
-
-    @AfterMapping
-    public void afterUpdate(TaskUpdateDTO data, @MappingTarget Task task) {
-        if (data.getTaskLabelIds() != null) {
-            List<Label> labels = new ArrayList<>();
-            for (var labelId : data.getTaskLabelIds()) {
-                var label = labelRepository.findById(labelId).orElseThrow();
-                labels.add(label);
-            }
-            task.setLabels(labels);
-        }
     }
 
 }
