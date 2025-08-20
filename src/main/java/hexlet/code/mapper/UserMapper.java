@@ -28,6 +28,7 @@ public abstract class UserMapper {
     public abstract User map(UserCreateDTO model);
 
     @Mapping(target = "email", source = "email")
+    @Mapping(target = "createdAt", source = "createdAt")
     public abstract UserDTO map(User data);
 
     public abstract User map(UserDTO data);
