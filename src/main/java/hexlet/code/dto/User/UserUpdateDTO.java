@@ -11,11 +11,10 @@ import lombok.Setter;
 public class UserUpdateDTO {
     private String firstName;
     private String lastName;
+
     @Email
     private String email;
 
-    @NotBlank
-    @Size(min = 3)
+    @Size(min = 3, message = "Password must be at least 3 characters")
     private String password;
-
 }

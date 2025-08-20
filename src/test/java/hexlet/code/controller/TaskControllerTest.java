@@ -25,6 +25,7 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
 import java.nio.charset.StandardCharsets;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
@@ -182,6 +183,11 @@ public class TaskControllerTest {
     public void testUpdate() throws Exception {
         var data = new HashMap<>();
         data.put("title", "Hello");
+        data.put("content", testTask.getDescription());
+        data.put("status", testTask.getTaskStatus().getSlug());
+        data.put("assigneeId", testTask.getAssignee() != null ? testTask.getAssignee().getId() : null);
+        data.put("taskLabelIds", Collections.emptyList());
+
         var request = put("/api/tasks/" + testTask.getId())
                 .with(token)
                 .contentType(MediaType.APPLICATION_JSON)

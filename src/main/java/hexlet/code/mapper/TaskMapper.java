@@ -15,6 +15,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @Mapper(
@@ -62,19 +63,24 @@ public abstract class TaskMapper {
 
     @Named("reverseLabels")
     public List<Long> reverseLabels(List<Label> labelList) {
-        if (labelList != null) {
-            List<Long> labels = new ArrayList<>();
-            for (var label : labelList) {
-                labels.add(label.getId());
-            }
-            return labels;
+        if (labelList == null) {
+            return Collections.emptyList();
         }
-        return null;
+
+        List<Long> labels = new ArrayList<>();
+        for (var label : labelList) {
+            labels.add(label.getId());
+        }
+        return labels;
     }
 
 
     @Named("forLabels")
     public List<Label> forLabels(List<Long> labelsIds) {
+        if (labelsIds == null) {
+            return Collections.emptyList();
+        }
+
         List<Label> labels = new ArrayList<>();
         for (var i : labelsIds) {
             var label = labelRepository.findById(i).orElseThrow();
