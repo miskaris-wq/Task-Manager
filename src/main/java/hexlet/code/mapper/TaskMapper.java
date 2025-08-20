@@ -113,5 +113,16 @@ public abstract class TaskMapper {
                 .orElseThrow();
     }
 
+    @AfterMapping
+    public void afterUpdate(TaskUpdateDTO data, @MappingTarget Task task) {
+        if (data.getTaskLabelIds() != null) {
+            List<Label> labels = new ArrayList<>();
+            for (var labelId : data.getTaskLabelIds()) {
+                var label = labelRepository.findById(labelId).orElseThrow();
+                labels.add(label);
+            }
+            task.setLabels(labels);
+        }
+    }
 
 }
