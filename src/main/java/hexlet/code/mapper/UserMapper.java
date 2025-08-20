@@ -27,7 +27,10 @@ public abstract class UserMapper {
     @Mapping(target = "passwordDigest", source = "password")
     public abstract User map(UserCreateDTO model);
 
+    @Mapping(target = "id", source = "id")
     @Mapping(target = "email", source = "email")
+    @Mapping(target = "firstName", source = "firstName")
+    @Mapping(target = "lastName", source = "lastName")
     @Mapping(target = "createdAt", source = "createdAt")
     public abstract UserDTO map(User data);
 
