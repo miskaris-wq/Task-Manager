@@ -7,6 +7,7 @@ import hexlet.code.exception.ResourceNotFoundException;
 import hexlet.code.exception.UnprocessableContentException;
 import hexlet.code.mapper.LabelMapper;
 import hexlet.code.repository.LabelRepository;
+import hexlet.code.repository.TaskRepository;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +33,7 @@ public class LabelController {
 
     private LabelRepository labelRepository;
     private LabelMapper labelMapper;
+    private TaskRepository taskRepository;
 
     @GetMapping(path = "")
     public ResponseEntity<List<LabelDTO>> index() {
@@ -63,10 +65,12 @@ public class LabelController {
     public void destroy(@PathVariable("id") long id) {
         var label = labelRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Label with " + id + " not found."));
-        if (label.getTasks().isEmpty()) {
+        boolean hasTasks = taskRepository.existsByLabelsId(id);
+
+        if (!hasTasks) {
             labelRepository.deleteById(id);
         } else {
-            throw new UnprocessableContentException("Нельзя удалить метку связанную с задачей");
+            throw new UnprocessableContentException("Can not delete label associated with task");
         }
     }
 
