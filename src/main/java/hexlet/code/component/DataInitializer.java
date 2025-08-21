@@ -17,8 +17,8 @@ import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 @Component
 @AllArgsConstructor
@@ -42,7 +42,7 @@ public class DataInitializer implements ApplicationRunner {
     private Task createTask(String name, String slug) {
         var task = new Task();
         var status = taskStatusRepository.findBySlug(slug).orElseThrow();
-        List<Label> labels = new ArrayList<>();
+        Set<Label> labels = new HashSet<>();
         task.setName(name);
         task.setTaskStatus(status);
         task.setLabels(labels);

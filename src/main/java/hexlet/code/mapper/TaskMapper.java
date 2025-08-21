@@ -14,9 +14,8 @@ import org.mapstruct.*;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Mapper(
         uses = {JsonNullableMapper.class, ReferenceMapper.class},
@@ -58,32 +57,25 @@ public abstract class TaskMapper {
     @Mapping(target = "description", source = "content")
     @Mapping(target = "taskStatus", source = "status", qualifiedByName = "slugToStatus")
     @Mapping(target = "name", source = "title")
-    //@Mapping(target = "labels", source = "taskLabelIds", qualifiedByName = "forLabels")
     public abstract void update(TaskUpdateDTO data, @MappingTarget Task task);
 
     @Named("reverseLabels")
-    public List<Long> reverseLabels(List<Label> labelList) {
-        if (labelList == null) {
+    public List<Long> reverseLabels(Set<Label> labels) {
+        if (labels == null || labels.isEmpty()) {
             return Collections.emptyList();
         }
-
-        List<Long> labels = new ArrayList<>();
-        for (var label : labelList) {
-            labels.add(label.getId());
-        }
-        return labels;
+        return labels.stream()
+                .map(Label::getId)
+                .collect(Collectors.toList());
     }
-
 
     @Named("forLabels")
-    public List<Label> forLabels(List<Long> labelsIds) {
-        if (labelsIds == null || labelsIds.isEmpty()) {
-            return Collections.emptyList();
+    public Set<Label> forLabels(List<Long> labelIds) {
+        if (labelIds == null || labelIds.isEmpty()) {
+            return Collections.emptySet();
         }
-
-        return labelRepository.findAllById(labelsIds);
+        return new HashSet<>(labelRepository.findAllById(labelIds));
     }
-
 
     @Named("slugToStatus")
     public TaskStatus slugToStatus(String data) {
