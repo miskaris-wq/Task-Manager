@@ -53,3 +53,7 @@ bin/
 
 ./src/main/resources/certs/private.pem
 
+
+# Gradle
+.gradle/
+

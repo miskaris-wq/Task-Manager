@@ -13,7 +13,7 @@ spring:
     hibernate:
       ddl-auto: create
   profiles:
-    active: development
+    active: dev
 
   output:
     ansi:
@@ -30,3 +30,5 @@ springdoc:
 rsa:
   private-key: classpath:certs/private.pem
   public-key: classpath:certs/public.pem
+
+

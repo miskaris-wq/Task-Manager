@@ -5,7 +5,6 @@ import hexlet.code.dto.User.UserDTO;
 import hexlet.code.dto.User.UserUpdateDTO;
 import hexlet.code.exception.ResourceNotFoundException;
 
-import hexlet.code.exception.UnprocessableContentException;
 import hexlet.code.mapper.UserMapper;
 import hexlet.code.repository.UserRepository;
 import hexlet.code.utils.UserUtils;
@@ -70,12 +69,7 @@ public class UserController {
     @PreAuthorize(ONLY_OWNER_BY_ID)
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void destroy(@PathVariable("id") long id) {
-        try {
-            userRepository.deleteById(id);
-        } catch (Exception e) {
-            throw new UnprocessableContentException("It is impossible to delete a user who has active tasks");
-        }
-
+        userRepository.deleteById(id);
     }
 
     @PutMapping(path = "/{id}")

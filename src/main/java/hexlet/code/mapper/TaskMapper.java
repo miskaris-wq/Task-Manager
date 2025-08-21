@@ -77,17 +77,13 @@ public abstract class TaskMapper {
 
     @Named("forLabels")
     public List<Label> forLabels(List<Long> labelsIds) {
-        if (labelsIds == null) {
+        if (labelsIds == null || labelsIds.isEmpty()) {
             return Collections.emptyList();
         }
 
-        List<Label> labels = new ArrayList<>();
-        for (var i : labelsIds) {
-            var label = labelRepository.findById(i).orElseThrow();
-            labels.add(label);
-        }
-        return labels;
+        return labelRepository.findAllById(labelsIds);
     }
+
 
     @Named("slugToStatus")
     public TaskStatus slugToStatus(String data) {
