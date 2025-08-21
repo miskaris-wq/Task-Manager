@@ -10,6 +10,7 @@ import hexlet.code.mapper.TaskMapper;
 import hexlet.code.repository.TaskRepository;
 import hexlet.code.utils.UserUtils;
 import jakarta.validation.Valid;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,14 +28,12 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/tasks")
+@AllArgsConstructor
 public class TaskController {
-    @Autowired
+
     private UserUtils userUtils;
-    @Autowired
     private TaskRepository taskRepository;
-    @Autowired
     private TaskMapper taskMapper;
-    @Autowired
     private TaskSpecification taskSpecification;
 
     @GetMapping(path = "")
