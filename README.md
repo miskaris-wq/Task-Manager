@@ -1,8 +1,9 @@
 ### Hexlet tests and linter status:
 [![Actions Status](https://github.com/miskaris-wq/java-project-99/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/miskaris-wq/java-project-99/actions)
 
-[![SonarQube Cloud](https://sonarcloud.io/images/project_badges/sonarcloud-light.svg)](https://sonarcloud.io/summary/new_code?id=miskaris-wq_java-project-99)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=miskaris-wq_java-project-99&metric=coverage)](https://sonarcloud.io/summary/new_code?id=miskaris-wq_java-project-99)
 
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=miskaris-wq_java-project-99&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=miskaris-wq_java-project-99)
 # java-project-99: Hexlet Project - Tasks Manager
 
 ## Description
