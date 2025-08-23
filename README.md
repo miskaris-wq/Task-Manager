@@ -13,11 +13,7 @@ The application allows users to create tasks, assign executors, track statuses, 
 
 ## Watch the working project
 
-There is the link where you can see how the project works: https://java-task-manager-ru.hexlet.app/
-
-## Watch the working project
-
-A live demo of the application is available at: [https://java-project-99.onrender.com](https://java-project-72.onrender.com) (Loading may take up to a minute as it uses a free hosting tier).
+A live demo of the application is available at: [https://java-project-99.onrender.com](https://java-project-99.onrender.com) (Loading may take up to a minute as it uses a free hosting tier).
 
 ## Project Goal
 

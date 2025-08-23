@@ -12,7 +12,6 @@ import hexlet.code.repository.TaskStatusRepository;
 import hexlet.code.repository.UserRepository;
 import hexlet.code.service.CustomUserDetailsService;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
@@ -24,19 +23,10 @@ import java.util.Set;
 @AllArgsConstructor
 public class DataInitializer implements ApplicationRunner {
 
-    @Autowired
     private final UserRepository userRepository;
-
-    @Autowired
     private final CustomUserDetailsService userService;
-
-    @Autowired
     private final TaskStatusRepository taskStatusRepository;
-
-    @Autowired
     private final LabelRepository labelRepository;
-
-    @Autowired
     private final TaskRepository taskRepository;
 
     private Task createTask(String name, String slug) {

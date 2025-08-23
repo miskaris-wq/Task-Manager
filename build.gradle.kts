@@ -1,7 +1,12 @@
 plugins {
-	id("application")
-	id("org.springframework.boot") version "3.5.4"
+	application
+	checkstyle
+	jacoco
+	id("org.springframework.boot") version "3.4.2"
 	id("io.spring.dependency-management") version "1.1.7"
+	id("io.freefair.lombok") version "8.10"
+	id("io.sentry.jvm.gradle") version "5.2.0"
+	id("org.sonarqube") version "6.0.1.5171"
 }
 
 group = "hexlet.code"
@@ -12,9 +17,8 @@ java {
 		languageVersion = JavaLanguageVersion.of(21)
 	}
 }
-
 application {
-	mainClass.set("hexlet.code.AppApplication")
+	mainClass = "hexlet.code.AppApplication"
 }
 
 repositories {
@@ -66,4 +70,18 @@ dependencies {
 
 tasks.withType<Test> {
 	useJUnitPlatform()
+}
+tasks.jacocoTestReport {
+	reports {
+		xml.required = true  // Для Sonar
+		csv.required = false
+		html.required = true
+	}
+}
+sonar {
+	properties {
+		property("sonar.projectKey", "miskaris-wq_java-project-99")
+		property("sonar.organization", "miskaris-wq")
+		property("sonar.host.url", "https://sonarcloud.io")
+	}
 }
