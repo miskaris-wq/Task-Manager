@@ -4,7 +4,7 @@ import hexlet.code.dto.Task.TaskCreateDTO;
 import hexlet.code.dto.Task.TaskDTO;
 import hexlet.code.dto.Task.TaskParamsDTO;
 import hexlet.code.dto.Task.TaskUpdateDTO;
-import hexlet.code.service.TaskService;
+import hexlet.code.service.interfaces.TaskService;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;

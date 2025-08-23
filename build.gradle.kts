@@ -73,7 +73,7 @@ tasks.withType<Test> {
 }
 tasks.jacocoTestReport {
 	reports {
-		xml.required = true  // Для Sonar
+		xml.required = true
 		csv.required = false
 		html.required = true
 	}
