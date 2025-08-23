@@ -145,5 +145,4 @@ class UserControllerTest {
         mockMvc.perform(request).andExpect(status().isNoContent());
         assertThat(userRepository.findById(id).isEmpty());
     }
-
 }

@@ -52,5 +52,4 @@ public abstract class UserMapper {
             model.setPasswordDigest(encoder.encode(password));
         }
     }
-
 }
