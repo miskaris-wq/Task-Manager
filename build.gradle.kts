@@ -71,13 +71,7 @@ dependencies {
 tasks.withType<Test> {
 	useJUnitPlatform()
 }
-tasks.jacocoTestReport {
-	reports {
-		xml.required = true
-		csv.required = false
-		html.required = true
-	}
-}
+
 sonar {
 	properties {
 		property("sonar.projectKey", "miskaris-wq_java-project-99")
