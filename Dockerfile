@@ -7,6 +7,7 @@ ENV SPRING_PROFILES_ACTIVE=prod
 
 COPY gradlew .
 COPY gradle gradle
+COPY config config
 COPY build.gradle.kts .
 COPY settings.gradle.kts .
 
