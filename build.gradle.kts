@@ -73,5 +73,7 @@ sonar {
 		property("sonar.projectKey", "miskaris-wq_java-project-99")
 		property("sonar.organization", "miskaris-wq")
 		property("sonar.host.url", "https://sonarcloud.io")
+		property("sonar.login", System.getenv("SONAR_TOKEN"))
+		property("sonar.coverage.jacoco.xmlReportPaths", "${buildDir}/reports/jacoco/test/jacocoTestReport.xml")
 	}
 }
