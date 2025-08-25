@@ -18,9 +18,9 @@ import java.util.List;
 @AllArgsConstructor
 public class LabelServiceImpl implements LabelService {
 
-    private LabelRepository labelRepository;
-    private LabelMapper labelMapper;
-    private TaskRepository taskRepository;
+    private final LabelRepository labelRepository;
+    private final LabelMapper labelMapper;
+    private final TaskRepository taskRepository;
 
     @Override
     public List<LabelDTO> getAll() {

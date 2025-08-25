@@ -27,7 +27,6 @@ import java.util.List;
 public class UserController {
 
     private final UserService userService;
-    private final UserUtils userUtils;
 
     private static final String ONLY_OWNER_BY_ID = """
                 @userUtils.getCurrentUser().getId() == #id

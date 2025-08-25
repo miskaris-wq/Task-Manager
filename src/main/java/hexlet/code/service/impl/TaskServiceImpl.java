@@ -18,9 +18,9 @@ import java.util.List;
 @AllArgsConstructor
 public class TaskServiceImpl implements TaskService {
 
-    private TaskRepository taskRepository;
-    private TaskMapper taskMapper;
-    private TaskSpecification taskSpecification;
+    private final TaskRepository taskRepository;
+    private final TaskMapper taskMapper;
+    private final TaskSpecification taskSpecification;
 
     @Override
     public List<TaskDTO> getAll(TaskParamsDTO params) {

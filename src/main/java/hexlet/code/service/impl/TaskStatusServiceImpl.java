@@ -18,8 +18,8 @@ import java.util.List;
 @AllArgsConstructor
 public class TaskStatusServiceImpl implements TaskStatusService {
 
-    private TaskStatusRepository repository;
-    private TaskStatusMapper taskStatusMapper;
+    private final TaskStatusRepository repository;
+    private final TaskStatusMapper taskStatusMapper;
 
     @Override
     public List<TaskStatusDTO> getAll() {
