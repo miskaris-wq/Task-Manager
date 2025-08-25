@@ -4,7 +4,6 @@ import hexlet.code.dto.User.UserCreateDTO;
 import hexlet.code.dto.User.UserDTO;
 import hexlet.code.dto.User.UserUpdateDTO;
 import hexlet.code.service.interfaces.UserService;
-import hexlet.code.utils.UserUtils;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;

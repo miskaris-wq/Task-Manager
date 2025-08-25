@@ -1,6 +1,7 @@
 package hexlet.code.handler;
 
 import hexlet.code.exception.UnprocessableContentException;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -21,6 +22,13 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
     @ExceptionHandler(UnprocessableContentException.class)
     public ResponseEntity<String> handleUnprocessableException(UnprocessableContentException ex) {
         return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY).body(ex.getMessage());
+    }
+
+    @ExceptionHandler(DataIntegrityViolationException.class)
+    public ResponseEntity<String> handleDataIntegrityViolation(DataIntegrityViolationException ex) {
+        log.warn("Data integrity violation: ", ex);
+        return ResponseEntity.status(HttpStatus.CONFLICT)
+                .body("Cannot perform operation due to data integrity constraints");
     }
 
     @ExceptionHandler(Exception.class)

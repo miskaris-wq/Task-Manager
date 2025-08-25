@@ -9,6 +9,8 @@ import jakarta.persistence.Table;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -61,5 +63,10 @@ public class Task implements BaseEntity {
     private LocalDate createdAt;
 
     @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "task_label",
+            joinColumns = @JoinColumn(name = "task_id"),
+            inverseJoinColumns = @JoinColumn(name = "label_id")
+    )
     private Set<Label> labels = new HashSet<>();
 }
