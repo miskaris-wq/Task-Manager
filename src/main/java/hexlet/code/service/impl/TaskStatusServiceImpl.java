@@ -54,12 +54,7 @@ public class TaskStatusServiceImpl implements TaskStatusService {
 
     @Override
     public void delete(Long id) {
-        try {
-            repository.deleteById(id);
-        } catch (DataIntegrityViolationException e) {
-            throw new UnprocessableContentException("Cannot delete task status because it is associated with tasks");
-        } catch (Exception e) {
-            throw new UnprocessableContentException("Error deleting task status");
-        }
+        repository.deleteById(id);
+
     }
 }
