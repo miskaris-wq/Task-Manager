@@ -25,7 +25,6 @@ The main goal of the project is to consolidate all the acquired knowledge and de
 *   **Spring Security**: Configuring authentication and authorization mechanisms
 *   **Data Filtering**: Implementing a clean filtering mechanism using Spring Data Specifications
 *   **Spring Boot Build**: Configuring the project with Gradle and deployment setup
-*   **Error Monitoring**: Integration with Rollbar for production monitoring
 
 ## Features
 
