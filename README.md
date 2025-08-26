@@ -44,8 +44,6 @@ The main goal of the project is to consolidate all the acquired knowledge and de
 *   **PostgreSQL** - Production database
 *   **H2 Database** - Development and testing
 *   **Gradle** - Build tool and dependency management
-*   **Thymeleaf** - Template engine for server-side rendering
-*   **Rollbar** - Error monitoring and tracking
 *   **JUnit 5 & Spring Boot Test** - Testing framework
 
 ## How to Run
